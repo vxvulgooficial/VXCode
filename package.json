@@ -1,0 +1,49 @@
+{
+  "name": "vxcode",
+  "version": "1.0.0",
+  "description": "VXCode - Editor de código por VX VULGO OFICIAL",
+  "main": "main.js",
+  "author": "VX VULGO OFICIAL",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win",
+    "build-linux": "electron-builder --linux AppImage"
+  },
+  "build": {
+    "appId": "com.vxvulgo.vxcode",
+    "productName": "VXCode",
+    "copyright": "© 2025 VX VULGO OFICIAL",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "renderer/**", "assets/**", "node_modules/**"],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerLanguages": ["pt_BR"],
+      "language": "1046",
+      "shortcutName": "VXCode"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "assets/icon.png",
+      "category": "Development"
+    }
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.44.0",
+    "discord-rpc": "^4.0.1"
+  }
+}
